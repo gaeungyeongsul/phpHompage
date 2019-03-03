@@ -1,0 +1,43 @@
+.joinForm{
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	font-family: 'NanumSquareR';
+}
+.join_table tr td:nth-child(2){
+	width: 60%;
+}
+.join_table input[type="password"],
+input[type="text"]{
+  width: 100%;
+}
+#user_id_res,
+#user_nickname_res,
+#user_password_res,
+#user_password2_res{
+	font-size: 10px;
+}
+
+.loginForm{
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+	font-family: 'NanumSquareR';
+}
+.login_table{
+  width: 100%;
+}
+.login_table tr td:nth-child(2){
+	width: 70%;
+}
+.login_table input[type="password"],
+input[type="text"]{
+  width: 100%;
+}
+
+.btn{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	text-align: center;
+}

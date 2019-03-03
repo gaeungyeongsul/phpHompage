@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<title>메인슬라이드</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+body{
+    height: 100%;
+}
+.gallery-wrapper{
+    position:relative;
+    width:60%;
+    margin:0 auto;
+    padding:10px;
+    border:5px solid #ccc;
+}
+.gallery-wrapper .gallery-list{
+    overflow:hidden;
+    position:relative;
+    border: 1px solid red;
+    width:100%;
+    height: 100%;
+    padding-bottom: 51%;
+    /* padding-bottom : 가로세로비율유지 */
+}
+.gallery-wrapper .gallery-list li{
+    position:absolute;
+    left:0;
+    width: 100%;
+    height: 100%;
+    display:none
+}
+.gallery-wrapper .gallery-list li:first-child{
+    display:block;
+}
+.gallery-wrapper .gallery-list li.active{
+    display:block;
+}
+.gallery-wrapper .gallery-list li a{
+    display:block;
+    text-align: center
+}
+.gallery-wrapper .gallery-list li a img {
+    width: 100%;
+    height: 100%;
+    display:block;
+    object-fit: cover;
+}
+
+.gallery-wrapper .btn-prev {
+    position:absolute;
+	left: 0;
+	top: 40%;
+    color: #f4e9ed;
+    font-size: 25px;
+}
+.gallery-wrapper .btn-next {
+    position:absolute;
+   	right: 0;
+	top: 40%;
+    color: #f4e9ed;
+    font-size: 25px;
+}
+.gallery-wrapper .btn-prev {
+    left:20px;
+}
+.gallery-wrapper .btn-next {
+    right:20px;
+}
+.ctrl-box {
+    margin-top:15px;
+    text-align:center;
+}
+.ctrl-box a .bullet {
+    display:inline-block;
+    width: 12px;
+    height: 12px;
+    border:1px solid #cfd2d7;
+    border-radius:100%;
+    background:#dfe2e7;
+    text-indent: -9999em;
+    font-size: 0;
+    vertical-align: middle
+}
+.ctrl-box a.active .bullet {
+	border: 1px solid #d43a3a;
+	background: #fd4b4b;
+}
+.btn-ctrl {
+	margin-left: 10px;
+	padding: 0 4px;
+	border: 1px solid #b6b6b6;
+	border-radius: 4px;
+	background-color: #dadada;
+	line-height: 20px;
+}
+</style>
+<script>
+$(document).ready(function(){
+    var JUI = JUI || {};
+
+!function (param) {
+	var global = param.g,
+		$      = param.jQ;
+
+	JUI.slider = function (selector, options) {
+
+		var container = $(selector),
+			detect    = {},
+			config    = {
+				speed: 400,
+				isSelected : 'active',
+				autoPlay : true,
+				duration : 2500
+			};
+
+		if (!container.length) {
+			return;
+		}
+
+		$.extend(config, options);
+			function setting() {
+				detect.$listBox      = container.find('.gallery-list');
+				detect.$lists        = detect.$listBox.children('li');
+				detect.width         = detect.$listBox.width();
+				detect.$indicate     = container.find('.ctrl-box a');
+				detect.view          = '.gallery-list';
+				detect.indicate      = '.ctrl-box a';
+				detect.prev          = '.btn-prev';
+				detect.next          = '.btn-next';
+				detect.ctrl          = '.btn-ctrl';
+				detect.max           = detect.$indicate.length - 1;
+				detect.min           = 0;
+				detect.currentIndex  = 0;
+				detect.selectedIndex = null;
+				detect.intervalId    = null;
+
+			}
+			setting();
+
+
+		function next(evt) {
+
+			if (evt.type === 'mouseenter') {
+				clearInterval(detect.intervalId);
+				return false;
+			}
+
+			detect.selectedIndex = detect.currentIndex + 1;
+			if (detect.selectedIndex > detect.max) {
+				detect.selectedIndex = 0;
+			}
+
+			toMove(detect.selectedIndex, detect.width);
+
+		}
+
+		function prev(evt) {
+
+			if (evt.type === 'mouseenter') {
+				clearInterval(detect.intervalId);
+				return false;
+			}
+
+			detect.selectedIndex = detect.currentIndex - 1;
+			if (detect.selectedIndex < detect.min) {
+				detect.selectedIndex = detect.max;
+			}
+			toMove(detect.selectedIndex, -detect.width);
+		}
+
+		function direction(selectedIndex) {
+			return detect.currentIndex < selectedIndex ? 'goToRight' : 'goToLeft';
+		}
+
+		function toMove(selectedIndex, offset) {
+
+			if (detect.selectedIndex == detect.currentIndex) return;
+			if (detect.$lists.is(':animated')) return;
+
+			detect.$lists.eq(selectedIndex).css({'left': offset}).addClass(config.isSelected);
+			detect.$lists.eq(selectedIndex).animate({'left': 0}, config.speed);
+
+			detect.$indicate.eq(detect.currentIndex).removeClass(config.isSelected);
+			detect.$indicate.eq(selectedIndex).addClass(config.isSelected);
+
+			detect.$lists.eq(detect.currentIndex).animate({'left': -offset}, config.speed, function () {
+				afterMoving(selectedIndex);
+			});
+		}
+
+		function afterMoving(selectedIndex) {
+			detect.$lists.eq(detect.currentIndex).removeClass(config.isSelected);
+			detect.currentIndex = selectedIndex;
+		}
+
+
+		$(document)
+			.on('click.slide.indicate', detect.indicate, function () {
+				detect.selectedIndex = $(this).index();
+				var position = direction(detect.selectedIndex),
+					offset   = null;
+
+				switch (position) {
+					case 'goToRight' :
+					offset = detect.width;
+					break;
+					case 'goToLeft' :
+					offset = -detect.width;
+				}
+				toMove(detect.selectedIndex, offset);
+			})
+			.on('click.slide.next, mouseenter', detect.next, next)
+			.on('click.slide.prev, mouseenter', detect.prev, prev)
+			.on('click.slide.ctrl', detect.ctrl, controller);
+
+		function startInterval() {
+			detect.intervalId = setInterval(autoMoving, config.duration);
+		}
+
+		function autoMoving() {
+			$(detect.next).trigger('click');
+		}
+
+		config.autoPlay ? startInterval() : controlState();
+
+		function controller() {
+			var $target = $(this);
+			if($target.is('.auto')) {
+				clearInterval(detect.intervalId);
+				$target.removeClass('auto').text('재생');
+			} else {
+				$target.addClass('auto').text('정지');
+				startInterval();
+			}
+		}
+
+		function controlState() {
+			$(detect.ctrl).removeClass('auto').text('재생')
+		}
+
+		$(detect.view +"," + detect.indicate).on({
+			'mouseenter' : function () {
+				clearInterval(detect.intervalId);
+			},
+			'mouseleave' : function () {
+				if (!$(detect.ctrl).is('.auto')) {
+					return;
+				}
+				startInterval();
+			}
+		});
+
+	};
+
+}({g:window,jQ: window.jQuery});
+
+$(function () {
+	/**
+	 * @param1 필수, @param2 옵션
+	 * @param @type selector : 슬라이드 컨테이닝 박스
+	 * @param @type {} : 객체 리터럴(옵션값)
+	 * 기본값 {isSelected : 'active', speed:400, duration: 2500, autoPlay: true}
+	 */
+
+	// 기본 옵션값으로 호출할 경우 옵션 생략가능
+	JUI.slider('#slider01');
+
+	// 사용자 정의 옵션값으로 호출
+	/*
+	JUI.slider('#slider01', {
+		speed : 200,
+		duration: 4000,
+		autoPlay: false
+	})
+	*/
+});
+
+})
+</script>
+</head>
+<body>
+<div id="slider01" class="gallery-wrapper">
+	<ul class="gallery-list">
+		<li><a href="#none"><img src="../img/slider/gum.png" alt="" /></a></li>
+		<li><a href="#none"><img src="../img/slider/hyep.png" alt="" /></a></li>
+		<li><a href="#none"><img src="../img/slider/visa.png" alt="" /></a></li>
+	</ul>
+	<a class="btn-prev" href="#none">◀ </a>
+	<a class="btn-next" href="#none">▶</a>
+
+	<div class="ctrl-box">
+		<a href="#none" class="active"><i class="bullet">1</i></a>
+		<a href="#none"><i class="bullet">2</i></a>
+		<a href="#none"><i class="bullet">3</i></a>
+		<!-- <a href="#none"><i class="bullet">4</i></a>
+		<a href="#none"><i class="bullet">5</i></a> -->
+		<button type="button" class="btn-ctrl auto">정지</button>
+	</div>
+</div>
+</body>
+</html>
