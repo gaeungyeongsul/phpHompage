@@ -14,17 +14,14 @@
   }else{
     $sql = "insert into user(user_no, user_id, user_password, user_nickname , user_gender, user_level, user_join_date)
             VALUES(0, '$user_id', '$user_password', '$user_nickname', $user_gender, 1, now())";
-    mysqli_query("set names utf8", $conn);
+    $conn->set_charset("utf8");
     $result = mysqli_query($conn,$sql);
-    mysqli_close;
+    mysqli_close($conn);
     if($result===false){
       echo "<script>
               alert('회원가입에 실패하였습니다.');
               history.back();
             </script>";
-    //  $prevPage = $_SERVER['HTTP_REFERER'];// 변수에 이전페이지 정보를 저장
-    //  header('location:'.$prevPage.'?result="false"');
-    //  exit;
     }else{
       header('Location: main.php');
       exit;

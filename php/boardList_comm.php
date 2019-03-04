@@ -1,7 +1,5 @@
 <?php
 function searching($conn){
-  header("content-type:text/html; charset=UTF-8");
-
   if(isset($_GET['page'])){
     $page = mysqli_real_escape_string($conn, $_GET['page']);
   }else{

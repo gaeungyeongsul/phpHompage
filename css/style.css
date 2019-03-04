@@ -1,3 +1,8 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+}
 /*--------------------------------------
   1. Font
 --------------------------------------*/
@@ -39,8 +44,12 @@ body {
 /*--------------------------------------
   3. header
 --------------------------------------*/
+.container{
+  margin: 0;
+  padding: 0;
+}
 .header_nav {
-    text-align: center;
+  text-align: center;
 }
 
 .header_logo {
@@ -114,8 +123,9 @@ body {
 
 .footer {
     position: relative;
+    bottom: 0;
     margin-top: 100px;
-    height: 70px;
+    height: 100px;
     clear: both;
     margin-left: 0;
     margin-right: 0;
@@ -126,14 +136,17 @@ body {
 /*--------------------------------------
   5. board, pagination, search
 --------------------------------------*/
-.board {
-    margin-top: 30px;
+.board{
+    padding-top: 50px;
     margin-right: auto;
     margin-left: auto;
-    width: 90%;
+    width: 80%;
 }
 
 .board_list {
+  margin-left: auto;
+  margin-right: auto;
+    margin-top: 30px;
     font-family: 'NanumSquareR';
     border-collapse: collapse;
     width: 100%;
@@ -237,19 +250,19 @@ body {
 /*--------------------------------------
   6. read
 --------------------------------------*/
-.boardone {
+.boardone{
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-    border-top: 1px solid black;
+    width: 100%;
+    border-top: 2px solid #F5D0A9;
     font-family: 'NanumSquareR';
     font-size: 12px;
+    display: block;
 }
-
 .board_nav_1,
 .board_nav_2 {
     width: 100%;
-    border-bottom: 1px solid #c8c8c8;
+    font-size: 14px;
 }
 
 .boardone .board_no {
@@ -259,11 +272,12 @@ body {
 .boardone .board_date,
 .boardone .board_reviewnum {
     float: right;
-    width: 10%;
+    text-align: right;
+    width: 15%;
 }
 
 .boardone .board_title {
-    width: 68%;
+    width: 60%;
 }
 
 .boardone .board_nick {
@@ -279,10 +293,28 @@ body {
 .board_content {
     padding: 10px 10px 10px 10px;
     padding-bottom: 40px;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #F5D0A9;
+}
+.btn{
+  text-align: right;
+}
+.btn input[type="button"],
+input[type="submit"] {
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.board_nav_1{
+  border-bottom: 1px dotted #F5D0A9;
+}
+.board_content{
+  padding: 30px 8% 30px 8%;
 }
 
-.listbutton {
-    margin-top: 20px;
-    float: right;
+/*--------------------------------------
+  6. writeboard
+--------------------------------------*/
+.writeboard{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
 }

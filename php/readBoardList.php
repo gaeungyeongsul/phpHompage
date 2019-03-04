@@ -1,18 +1,18 @@
 <?php
 header("content-type:text/html; charset=UTF-8");
 include("boardList_comm.php");
-include("db.php");
+//include("db.php");
 include("../Model/board.php");
 
-function listd(){
-  $conn = dbconn();
+function listd($conn){
+  //$conn = dbconn();
   $search = searching($conn);
   $search['skip'] = getSkip($search['page'],$search['numb']);
   getBoardList($search);
 }
 
-function page(){
-  $conn = dbconn();
+function page($conn){
+  //$conn = dbconn();
   $search = searching($conn);
   $end = getEndPage($search['page'], $search['numb']);
   $last = getLastPage($search);
@@ -79,8 +79,8 @@ function getBoardList($search){
     $i++;
     echo '<tr>';
     echo '	<td>'.$row['board_no'].'</td>';
-    echo '	<td><a href=readBoardListView.php?';
-    echo          'page='.$search['page'].'&numb='.$search['numb'];
+    echo '	<td><a href=readBoard.php?board_no='.$row['board_no'];
+    echo          '&page='.$search['page'].'&numb='.$search['numb'];
     echo          '&type='.$search['type'].'&keyword='.$search['keyword'].'>';
     echo        $row['board_title'].'</a></td>';
     echo '	<td>'.$row['board_user_nickname'].'</td>';

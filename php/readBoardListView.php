@@ -24,17 +24,25 @@
           	<th>조회수</th>
           </tr>
 					<?php
+						include("db.php");
+						$conn = dbconn();
 						include("readboardList.php");
-						$boardlist = listd();
+						$boardlist = listd($conn);
 					?>
         </table>
-        <input type="button" value="글쓰기" class="write_button">
+				<?php
+				  //session_start();
+					if(!empty($_SESSION['user_id'])){
+				?>
+        <input type="button" value="글쓰기" class="write_button" onclick="location.href='writeForm.php'">
+				<?php
+					}
+				?>
         </div>
         <div class="page">
           <div class="pagination">
-
 						<?php
-							$paging = page();
+							$paging = page($conn);
 						?>
           </div>
         </div>
