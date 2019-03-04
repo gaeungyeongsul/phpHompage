@@ -6,10 +6,12 @@
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 <title>메인슬라이드</title>
-<link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/style.css">
 <script type="text/javascript" src="../js/slider.js"></script>
+<style>
 
+</style>
 </head>
 <body>
 	<?php include("header.php"); ?>

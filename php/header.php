@@ -1,6 +1,13 @@
 <header>
     <div class="container">
         <div class="header_logo">
+          <div class="user_nav">
+            <ul>
+              <li><a href="main.php">회원가입</a></li>
+              <li><a href="map.php">로그인</a></li>
+              <li><a href="board.html">마이페이지</a></li>
+            </ul>
+          </div>
             <a href="#"><img src="../img/logo.PNG"></a>
         </div>
         <div class="header_nav">

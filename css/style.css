@@ -45,8 +45,38 @@ body {
 
 .header_logo {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     padding-bottom: 20px;
+}
+.user_nav {
+    text-align: right;
+		margin-right: 30px;
+}
+.user_nav ul {
+    width: 100%;
+    background-color: white;
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+}
+
+.user_nav li {
+    font-family: 'NanumSquareB';
+		font-size: 14px;
+    padding-left: 10px;
+    display: inline;
+}
+.user_nav li:not(:nth-child(1)) {
+	border-left: 1px solid black;
+}
+
+.user_nav a {
+    text-decoration: none;
+    color: black;
+}
+
+.user_nav a:hover {
+    border-bottom: 1px dotted black;
 }
 
 .header_logo img {
@@ -63,7 +93,6 @@ body {
 }
 
 .header_nav li {
-
     font-family: 'NanumSquareB';
     padding-left: 10px;
     padding-right: 10px;
@@ -78,8 +107,6 @@ body {
 .header_nav a:hover {
     border-bottom: 1px dotted black;
 }
-
-
 
 /*--------------------------------------
   4. footer
