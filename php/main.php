@@ -7,11 +7,15 @@
     crossorigin="anonymous"></script>
 <title>메인슬라이드</title>
 <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/main.css?sfsdf">
 <script type="text/javascript" src="../js/slider.js"></script>
-<style>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+<!-- Bootstrap core CSS -->
+<!-- Material Design Bootstrap -->
+<link href="../mdb/css/mdb.min.css" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="../mdb/css/style.css" rel="stylesheet">
 
-</style>
 </head>
 <body>
 	<?php include("header.php"); ?>
@@ -33,9 +37,31 @@
 									<a href="#none"><i class="bullet">3</i></a>
 								</div>
 							</div>
+							<div class="chart">
+								<div class="chart1">
+									<p>작년 제주도에는?</p><br>
+									<canvas id="lineChart"></canvas>
+								</div>
+								<div class="chart2">
+									<p>작년 <?= date("m"); ?>월 제주도에는?</p><br>
+								<canvas id="pieChart"></canvas>
+							</div>
+							</div>
 						</div>
+
 				</div>
 		</div>
 		<?php include("footer.php"); ?>
+
+		<!-- JQuery -->
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="../mdb/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="../mdb/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="../mdb/js/mdb.js"></script>
+		<script type="text/javascript" src="../js/chart.js"></script>
+
+
 </body>
 </html>

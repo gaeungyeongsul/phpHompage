@@ -8,7 +8,7 @@ body{
 }
 .gallery-wrapper{
     position:relative;
-    width:70%;
+    width:90%;
     margin:0 auto;
     padding:10px;
     border:5px solid #F5D0A9;
@@ -92,4 +92,22 @@ body{
 	border-radius: 4px;
 	background-color: #dadada;
 	line-height: 20px;
+}
+<style>
+.chart{
+	width: 92%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top : 30px;
+}
+.chart .chart1{
+	display:inline-block;
+	width: 45%;
+	margin-top: 50px;
+}
+.chart .chart2{
+	display:inline-block;
+	width: 45%;
+	float: right;
+	margin-top: 50px;
 }
