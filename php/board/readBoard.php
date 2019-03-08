@@ -43,9 +43,12 @@
                     <div class="board_nav_1">
                       <?php
                         include("../db/db.php");
-          						  $conn = dbconn();
+          						  $conn = dbconn();                        
+                        include("updateBoardViews.php");
+                        updateBoardViews($conn);
                         include("selectOneBoard.php");
                         $board = readBoard($conn);
+
                       ?>
                         <div class="board_no"><?= $board['board_no']; ?></div>
                         <div class="board_title"><?= $board['board_title']; ?></div>
@@ -64,12 +67,6 @@
                       if(!empty($_SESSION['user_id'])
                           && $_SESSION['user_id'] == $board['board_user_id']){
                     ?>
-                    <?php
-                      /*<form class="deleteForm" method="post" action="deleteBoard.php" onsubmit="return deleteCheck();">
-                      <input type="hidden" value="<?= $board['board_no']; ?>" name="board_no">
-                      <input type="button" value="수정하기" onclick="location.href='modifyBoard.php?board_no<?=$url; ?>'">
-                      <input type="submit" value="삭제하기"> */
-                     ?>
                     <form method="post" action="modifyBoardForm.php">
                     <input type="hidden" value="<?= $board['board_no']; ?>" name="board_no">
                     <input type="submit" value="수정하기">

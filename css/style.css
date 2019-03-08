@@ -151,6 +151,7 @@ body {
     border-collapse: collapse;
     width: 100%;
     border-bottom: 2px solid #F5D0A9;
+    text-align: center;
 }
 
 .board_list td,
@@ -168,9 +169,28 @@ body {
     padding-bottom: 10px;
     border-top: 2px solid #F5D0A9;
     border-bottom: 4px double #F5D0A9;
-    text-align: left;
     color: black;
     font-size: 14px;
+}
+
+.board_list th:nth-child(1) {
+    width: 10%;
+}
+.board_list th:nth-child(2) {
+    width: 40%;
+}
+.board_list th:nth-child(3) {
+    width: 20%;
+}
+.board_list th:nth-child(1) {
+    width: 15%;
+}
+.board_list th:nth-child(1) {
+    width: 10%;
+}
+.board_list td:nth-child(2) {
+  text-align: left;
+  
 }
 
 .writeboard .board_title{
