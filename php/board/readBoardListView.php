@@ -6,11 +6,11 @@
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 <title>게시글</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../../css/style.css">
 
 </head>
 <body>
-	<?php include("header.php"); ?>
+	<?php include("../header.php"); ?>
 	<div class="container">
 		<div class="box">
 			<div class="board">
@@ -24,7 +24,7 @@
           	<th>조회수</th>
           </tr>
 					<?php
-						include("db.php");
+						include("../db/db.php");
 						$conn = dbconn();
 						include("readboardList.php");
 						$boardlist = listd($conn);
@@ -62,6 +62,6 @@
 			</div>
 		</div>
 	</div>
-	<?php include("footer.php"); ?>
+	<?php include("../footer.php"); ?>
 </body>
 </html>

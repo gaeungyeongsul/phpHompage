@@ -1,6 +1,6 @@
 <?php
-include("db.php");
-include("getUser.php");
+include("../db/db.php");
+include("../user/getUser.php");
 
 $conn = dbconn();
 $board_content = $_POST['contents'];

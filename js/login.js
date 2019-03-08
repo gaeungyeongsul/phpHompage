@@ -9,7 +9,7 @@ $(document).ready(function(){
       },
       success : function(result){
         if(result){
-          location.href='main.php';
+          location.href='../main/main.php';
         }else{
           alert('잘못된 아이디 혹은 비밀번호입니다.');
         }

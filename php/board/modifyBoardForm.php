@@ -7,13 +7,13 @@
     crossorigin="anonymous"></script>
 <title>글 수정</title>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../../css/style.css">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 <!-- include summernote css/js -->
-<link href="../summernote/summernote.css" rel="stylesheet">
-<script src="../summernote/summernote.js"></script>
+<link href="../../summernote/summernote.css" rel="stylesheet">
+<script src="../../summernote/summernote.js"></script>
 <style>
 .board_title{
   width: 100%;
@@ -70,9 +70,9 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<?php include("header.php"); ?>
+	<?php include("../header.php"); ?>
   <?php
-    include("db.php");
+    include("../db/db.php");
     $conn = dbconn();
     include("selectOneBoard.php");
     $board = readBoard($conn);
@@ -100,6 +100,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-	<?php include("footer.php"); ?>
+	<?php include("../footer.php"); ?>
 </body>
 </html>

@@ -2,7 +2,7 @@
 header("content-type:text/html; charset=UTF-8");
 include("boardList_comm.php");
 //include("db.php");
-include("../Model/board.php");
+include("../../Model/board.php");
 
 function listd($conn){
   //$conn = dbconn();

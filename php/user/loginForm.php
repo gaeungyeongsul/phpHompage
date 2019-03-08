@@ -6,12 +6,12 @@
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
 <title>로그인</title>
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/join.css">
-<script type="text/javascript" src="../js/login.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/join.css">
+<script type="text/javascript" src="../../js/login.js"></script>
 </head>
 <body>
-	<?php include("header.php"); ?>
+	<?php include("../header.php"); ?>
 	<div class="container">
 		<div class="box">
 			<div class="board">
@@ -35,6 +35,6 @@
 			</div>
 		</div>
 	</div>
-	<?php include("footer.php"); ?>
+	<?php include("../footer.php"); ?>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>new</title>
 </head>
-<link rel="stylesheet" href="../css/style.css?">
+<link rel="stylesheet" href="../../css/style.css?">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -35,14 +35,14 @@
 
 </script>
 <body>
-  <?php include("header.php"); ?>
+  <?php include("../header.php"); ?>
     <div class="container">
         <div class="box">
             <div class="board">
                 <div class="boardone">
                     <div class="board_nav_1">
                       <?php
-                        include("db.php");
+                        include("../db/db.php");
           						  $conn = dbconn();
                         include("selectOneBoard.php");
                         $board = readBoard($conn);
@@ -130,6 +130,6 @@
         </div>
       </div>
     </div>
-  <?php include("footer.php"); ?>
+  <?php include("../footer.php"); ?>
 </body>
 </html>

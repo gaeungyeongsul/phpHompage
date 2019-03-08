@@ -8,7 +8,7 @@ $(document).ready(function() {
   var us_total = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   var else_total = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  $.get('../jeju/jeju_korean.xml', function(data) {
+  $.get('../../jeju/jeju_korean.xml', function(data) {
     $(data).find("Row").each(function() {
       if ($(this).find("구분").text() == "형태별") {
         for (var i = 0; i < 12; i++) {
@@ -22,7 +22,7 @@ $(document).ready(function() {
       }
     })
   });
-  $.get('../jeju/jeju_foreigner.xml', function(data) {
+  $.get('../../jeju/jeju_foreigner.xml', function(data) {
     $(data).find("Row").each(function() {
       for (var i = 0; i < 12; i++) {
         if(i < 9)

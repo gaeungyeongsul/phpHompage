@@ -173,6 +173,18 @@ body {
     font-size: 14px;
 }
 
+.writeboard .board_title{
+  width: 100%;
+  height: 40px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "nanumsquareR";
+}
+
 .board p {
     font-family: 'NanumSquareB';
     font-size: 20px;

@@ -1,6 +1,6 @@
 <?php
   header("content-type:text/html; charset=UTF-8");
-  include("db.php");
+  include("../db/db.php");
   $conn = dbconn();
 
   $user_id = mysqli_real_escape_string($conn, $_POST['user_id']);
@@ -23,7 +23,7 @@
               history.back();
             </script>";
     }else{
-      header('Location: main.php');
+      header('Location: ../main/main.php');
       exit;
     }
   }

@@ -1,5 +1,5 @@
 <?php
-  include("db.php");
+  include("../db/db.php");
   $conn = dbconn();
   if (isset($_GET['user_id'])) {
     $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
