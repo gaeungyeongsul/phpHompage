@@ -81,7 +81,7 @@ $(document).ready(function() {
 		<div class="box">
 			<div class="board">
         <div class="writeboard">
-					<p>글쓰기</p>
+					<p>글수정</p>
           <form onsubmit="return modif();" action="modifyBoard.php" method="post">
             <input type="hidden" name="board_no" value="<?=$board['board_no']; ?>">
             <input type="hidden" name="board_user_id" value="<?=$board['board_user_id']; ?>">

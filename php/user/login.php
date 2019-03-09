@@ -8,22 +8,27 @@
     if(!$conn){
       echo "연결이 실패하였습니다. ".mysqli_error();
     }else{
-      $sql = "select * from user where user_id='$user_id' && user_password='$user_password'";
-      //mysqli_query("set names utf8", $conn);
+      $sql = "select user_password from user where user_id='$user_id'";
       $result = $conn->query($sql);
       if ($result) {
         $row = $result->fetch_object();
-        if($row == null)
+        if($row != null){
+          $get_password = $row -> user_password;
+          if (password_verify($user_password, $get_password)) {
+            session_start();
+            $_SESSION['user_id'] = $user_id;
+            echo true;
+          } else {
+            echo false;
+          }
+        }else{
           echo false;
-        else{
-          session_start();
-          $_SESSION['user_id'] = $user_id;
-          echo true;
         }
-        // 메모리 정리
-        $result->free();
+      }else{
+        echo false;
       }
-      $conn->close();
+      $result->free();
     }
+    $conn->close();
   }
 ?>
