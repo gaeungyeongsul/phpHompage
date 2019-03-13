@@ -19,7 +19,7 @@ if($_SESSION['user_id'] == $board_user_id){
             history.go(-2);
           </script>";
   }else{
-    header('Location: readBoardListView.php');
+    header('Location: readBoard.php?board_no='.$board_no);
     exit;
   }
 }

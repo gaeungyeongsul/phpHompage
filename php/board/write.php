@@ -6,7 +6,7 @@ $conn = dbconn();
 $board_content = $_POST['contents'];
 $board_title = $conn->real_escape_string($_POST['title']);
 session_start();
-$board_user_id = $_SESSION->user_id;
+$board_user_id = $_SESSION['user_id'];
 $board_user_nickname = getUserNickname($conn, $board_user_id);
 
   $sql = "insert into board(board_no, board_user_id, board_user_nickname, board_title,";
