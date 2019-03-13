@@ -70,7 +70,7 @@ var passwordcheck = function(){
 	if(user_pass == ""){
 		$('#user_password_res').html('PW를 입력해주세요.').css("color","red");
 	}else{
-		var passPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+		var passPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&]){8,}$/;
 		if(passPattern.test(user_pass)){
 			$('#user_password_res').html('사용가능 한 PW입니다.').css("color","black");
 		}else{

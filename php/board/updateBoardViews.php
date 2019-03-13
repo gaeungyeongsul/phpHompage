@@ -8,6 +8,6 @@ function updateBoardViews($conn){
   $sql .= " where board_no=$board_no";
   $conn->set_charset("utf8");
 
-  $result = mysqli_query($conn,$sql);
+  $result =$conn->query($sql);
 }
 ?>

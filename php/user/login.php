@@ -2,8 +2,8 @@
   include("../db/db.php");
   $conn = dbconn();
   if (isset($_POST['user_id']) && isset($_POST['user_password'])) {
-    $user_id = mysqli_real_escape_string($conn, $_POST['user_id']);
-    $user_password = mysqli_real_escape_string($conn, $_POST['user_password']);
+    $user_id = $conn->real_escape_string($_POST['user_id']);
+    $user_password =$conn->real_escape_string($_POST['user_password']);
 
     if(!$conn){
       echo "연결이 실패하였습니다. ".mysqli_error();
@@ -13,7 +13,7 @@
       if ($result) {
         $row = $result->fetch_object();
         if($row != null){
-          $get_password = $row -> user_password;
+          $get_password = $row->user_password;
           if (password_verify($user_password, $get_password)) {
             session_start();
             $_SESSION['user_id'] = $user_id;

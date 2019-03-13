@@ -24,18 +24,22 @@ try {
     $response = curl_exec ($ch);
     $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-    $result = new SimpleXMLElement($response);
-    for($i = 0; $i <10 ; $i++){
-			$str_date = $result->channel->item[$i]->postdate;
-			$date = date("Y-m-d", strtotime( $str_date ) );
-      $result_object = (object) array(
-        'link' => $result->channel->item[$i]->link,
-        'title' => $result->channel->item[$i]->title,
-				'bloggername' => $result->channel->item[$i]->bloggername,
-				'postdate' => $date
-      );
-      $searchlist[$i] = $result_object;
-    }
+		if($status_code == 200) {
+    	$result = new SimpleXMLElement($response);
+    	for($i = 0; $i <10 ; $i++){
+				$str_date = $result->channel->item[$i]->postdate;
+				$date = date("Y-m-d", strtotime( $str_date ) );
+      	$result_object = (object) array(
+        	'link' => $result->channel->item[$i]->link,
+        	'title' => $result->channel->item[$i]->title,
+					'bloggername' => $result->channel->item[$i]->bloggername,
+					'postdate' => $date
+      	);
+      	$searchlist[$i] = $result_object;
+    	}
+		} else {
+ 			$searchlist['msg'] = "Error 내용:".$response;
+		}
 	}
 } catch(exception $e) {
 	$searchlist['success']	= false;

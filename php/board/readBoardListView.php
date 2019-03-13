@@ -7,7 +7,9 @@
     crossorigin="anonymous"></script>
 <title>게시글</title>
 <link rel="stylesheet" href="../../css/style.css">
+<script>
 
+</script>
 </head>
 <body>
 	<?php include("../header.php"); ?>
@@ -15,6 +17,8 @@
 		<div class="box">
 			<div class="board">
         <p>여행 후기 게시판</p>
+				
+				<input type="hidden" name="search" value="">
         <table class="board_list">
         	<tr>
           	<th>글번호</th>

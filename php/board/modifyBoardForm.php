@@ -27,47 +27,9 @@
   font-family: "nanumsquareR";
 }
 </style>
-<script>
-$(document).ready(function() {
-  $('#summernote').summernote({
-    height : 400,
-    maxHeight : null,
-    minHeight : 200,
-    focus : true,
-    lang : 'ko-KR',
-    callbacks: {
-      onImageUpload: function(files, editor, welEditable) {
-        for (var i = files.length - 1; i >= 0; i--) {
-          sendFile(files[i], this);
-        }
-      }
-    }
-  });
-  var modif = function(){
-    var markup = $('#summernote').summernote('code');
-    return markup;
-  }
-  function sendFile(file, el) {
-      var data = new FormData();
-      data.append('file', file);
-      $.ajax({
-        data: data,
-        type: 'POST',
-        url: 'saveimage.php',
-        cache: false,
-        contentType: false,
-        enctype: 'multipart/form-data',
-        processData: false,
-        success: function(img_name) {
-          $(el).summernote('editor.insertImage', img_name);
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-          console.log(textStatus + " " + errorThrown);
-        }
-      });
-  }
-});
-</script>
+
+<script src="../../js/write.js"></script>
+
 </head>
 <body>
 	<?php include("../header.php"); ?>
@@ -82,7 +44,7 @@ $(document).ready(function() {
 			<div class="board">
         <div class="writeboard">
 					<p>글수정</p>
-          <form onsubmit="return modif();" action="modifyBoard.php" method="post">
+          <form onsubmit="return writef();" action="modifyBoard.php" method="post">
             <input type="hidden" name="board_no" value="<?=$board['board_no']; ?>">
             <input type="hidden" name="board_user_id" value="<?=$board['board_user_id']; ?>">
             <input type="text" name="title" class="board_title" placeholder="제목을 입력하세요."

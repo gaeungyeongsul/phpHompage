@@ -1,22 +1,22 @@
 <?php
 function searching($conn){
   if(isset($_GET['page'])){
-    $page = mysqli_real_escape_string($conn, $_GET['page']);
+    $page = $conn->real_escape_string($_GET['page']);
   }else{
     $page = 1;
   }
   if(isset($_GET['numb'])){
-    $numb = mysqli_real_escape_string($conn, $_GET['numb']);
+    $numb = $conn->real_escape_string($_GET['numb']);
   }else{
     $numb = 10;
   }
   if(isset($_GET['type'])){
-    $type = mysqli_real_escape_string($conn,  $_GET['type']);
+    $type = $conn->real_escape_string($_GET['type']);
   }else{
     $type = 0;
   }
   if(isset($_GET['keyword'])){
-    $keyword = mysqli_real_escape_string($conn, $_GET['keyword']);
+    $keyword = $conn->real_escape_string($_GET['keyword']);
   }else{
     $keyword ='';
   }
